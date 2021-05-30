@@ -11,7 +11,13 @@ $id = empty($_GET['id']) ? false : $_GET['id'];
 
 if ($id) {
 
-    $stmt = $conn->prepare("SELECT * FROM `stanze` WHERE `id` = ?");
+    $stmt = $conn->prepare("SELECT `stanze`.`id`, `stanze`.`room_number`, `stanze`.`floor`, `configurazione_id`, `configurazioni`.`title`, `configurazioni`.`description` 
+    FROM `stanze` 
+    INNER JOIN `prenotazioni` 
+    ON `stanze`.`id` = `prenotazioni`.`stanza_id` 
+    INNER JOIN `configurazioni` 
+    ON `prenotazioni`.`configurazione_id` = `configurazioni`.`id`
+    WHERE `stanze`.`id` = ?");
     $stmt->bind_param('s', $id);
     //execute query
     $stmt->execute();
