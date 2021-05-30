@@ -4,11 +4,11 @@
 
 <?php require_once __DIR__ . '/partials/templates/head.php'; ?>
 
-<body>
+<body class="bg-success">
     
     <header class="bg-primary">
         <div class="container">
-            <h1 class="header py-4">Hotel rooms</h1>
+            <h1 class="header py-4 text-white">Hotel rooms</h1>
         </div>
     </header>
 
